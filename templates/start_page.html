@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Detection</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img id="imagePreview" src="#" alt="Image Preview" class="img-fluid" style="width: 100%; height: auto; object-fit: contain; margin-bottom: 20px;">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                <button class="btn btn-primary" onclick="document.getElementById('imageInput').click();">Insert Image</button>
+                <button class="btn btn-secondary" onclick="clearImage()">Clear Image</button>
+                <button class="btn btn-success" onclick="detectImage()">Detect</button>
+                <button class="btn btn-info" onclick="showUserGuide()">User Guide</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('imageInput').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            const imagePreview = document.getElementById('imagePreview');
+
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                imagePreview.src = event.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        });
+
+        function clearImage() {
+            document.getElementById('imagePreview').src = '#';
+        }
+
+        function detectImage() {
+            // Implement your image detection logic here
+            alert('Image detection logic will go here!');
+        }
+
+        function showUserGuide() {
+            alert('User guide will be displayed here!');
+        }
+    </script>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
