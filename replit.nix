@@ -1,5 +1,6 @@
 { pkgs }: {
   deps = [
+    pkgs.libpng
     pkgs.zlib
     pkgs.which
     pkgs.snappy
