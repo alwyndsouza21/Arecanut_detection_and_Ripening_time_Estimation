@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Detection</title>
+    <title>Detection Page</title>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -17,13 +17,12 @@
         .background {
             position: relative;
             background-image: url("static/alex-shutin-kKvQJ6rK6S4-unsplash.jpg");
-            background-size: auto;
+            background-size: auto 200vh;
             background-repeat: no-repeat;
             background-attachment: fixed;
             color: #ffffff;
             margin: 0;
             padding: 0;
-            min-height: 150vh;
         }
 
         .background::before {
@@ -34,13 +33,12 @@
             right: 0;
             bottom: 0;
             background-image: inherit;
-            background-size: auto;
+            background-size: auto 200hv;
             background-repeat: no-repeat;
             background-attachment: fixed;
             filter: blur(8px);
             z-index: -1;
             opacity: 0.6;
-            min-height: 150vh;
         }
 
         .header-container {
@@ -69,7 +67,7 @@
             min-height: calc(100vh - 100px);
             position: relative;
             top: 100px;
-            z-index: 1; /* Ensure content is above pseudo-element */
+            z-index: 1;
         }
 
         .header {
@@ -153,18 +151,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <img id="imagePreview" src="#" alt="Image Preview" class="img-fluid">
-                    <input type="file" id="imageInput" accept="image/*" style="display: none;">
-                    <button class="btn btn-primary" onclick="document.getElementById('imageInput').click();">Insert Image</button>
-                    <button class="btn btn-secondary" onclick="clearImage()">Clear Image</button>
-                    <form action="/detect" method="get" class="btn-container">
-                        <button type="submit" class="btn btn-success">Detect</button>
+                    <img id="imagePreview" src="#" alt="Detected Image" class="img-fluid">
+                    <form action="/estimate" method="get" class="btn-container">
+                        <button type="submit" class="btn btn-success">Proceed to Estimate</button>
                     </form>
                     <button class="btn btn-info" onclick="showUserGuide()">User Guide</button>
+                    <a href="/" class="btn btn-danger">Return to Home</a>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
         document.getElementById('imageInput').addEventListener('change', function (e) {
@@ -180,20 +181,10 @@
             reader.readAsDataURL(file);
         });
 
-        function clearImage() {
-            document.getElementById('imagePreview').src = '#';
-            document.getElementById('imagePreview').style.display = 'none';
-        }
-
         function showUserGuide() {
             alert('User guide will be displayed here!');
         }
     </script>
-
-    <!-- Bootstrap JS and Popper.js -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 

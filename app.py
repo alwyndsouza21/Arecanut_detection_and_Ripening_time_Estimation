@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,request
 
 # Creating an app instance
 app = Flask(__name__)
@@ -7,6 +7,21 @@ app = Flask(__name__)
 @app.route("/")
 def hello():
     return render_template("start_page.html")
+
+@app.route("/detect",methods=['GET', 'POST'])
+def detect():
+  if request.method == 'POST':
+  # Handle image detection here
+    pass
+  return render_template("detection_page.html")
+  
+@app.route("/estimate",methods=["GET","POST"])
+def estimate():
+  if request.method=="POST":
+    #handle image estimation here
+    pass
+  return render_template("estimation_page.html")
+
 
 if __name__ == '__main__':
     # Running the app with specified host and port
